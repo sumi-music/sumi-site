@@ -1,0 +1,275 @@
+[
+  {
+    "id": "kaze",
+    "title": "風",
+    "title_en": "wind",
+    "date": "2026-04-17",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1733552",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1733552/itd1733552.png",
+    "url": "https://linkco.re/9ndYU9p0",
+    "spotify": "5MLOYTGbhkYwZAxmu2woYH",
+    "apple": "1893837094"
+  },
+  {
+    "id": "petrichor",
+    "title": "petrichor",
+    "title_en": "petrichor",
+    "date": "2026-05-25",
+    "type": "Single",
+    "tags": [
+      "水"
+    ],
+    "tcid": "1741520",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1741520/itd1741520.png",
+    "url": "https://linkco.re/tDyb5RVc",
+    "apple": "1895107366"
+  },
+  {
+    "id": "microbit",
+    "title": "microbit",
+    "title_en": "microbit",
+    "date": "2026-04-20",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1733573",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1733573/itd1733573.png",
+    "url": "https://linkco.re/N723mmXN",
+    "apple": "1893836178"
+  },
+  {
+    "id": "mermaid",
+    "title": "mermaid feat. 灰野薊乃",
+    "title_en": "mermaid (feat. haino azamino)",
+    "date": "2026-05-02",
+    "type": "Single",
+    "tags": [
+      "水"
+    ],
+    "tcid": "1741635",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1741635/itd1741635.png",
+    "url": "https://linkco.re/3g647FTg",
+    "apple": "1895108021"
+  },
+  {
+    "id": "butterfly",
+    "title": "butterfly",
+    "title_en": "butterfly",
+    "date": "2026-05-02",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1733794",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1733794/itd1733794.png",
+    "url": "https://linkco.re/crDNZAgY",
+    "spotify": "05vnPE4ym7c76ICm9mJVds",
+    "apple": "1893931999"
+  },
+  {
+    "id": "dream",
+    "title": "dream",
+    "title_en": "dream",
+    "date": "2026-05-12",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1768073",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1768073/itd1768073.png",
+    "url": "https://linkco.re/VANn7sfV",
+    "apple": "6768364846"
+  },
+  {
+    "id": "bouquet",
+    "title": "ブーケ",
+    "title_en": "Bouquet",
+    "date": "2026-05-11",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1735001",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1735001/itd1735001.png",
+    "url": "https://linkco.re/VYPcg4zM",
+    "apple": "1894110057"
+  },
+  {
+    "id": "maria-age",
+    "title": "maria age",
+    "title_en": "maria age",
+    "date": "2026-05-18",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1736427",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1736427/itd1736427.png",
+    "url": "https://linkco.re/xBMZmRpC",
+    "apple": "1894473809"
+  },
+  {
+    "id": "sou",
+    "title": "想",
+    "title_en": "sou",
+    "date": "2026-06-01",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1750925",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1750925/itd1750925.png",
+    "url": "https://linkco.re/ddY2FPzd",
+    "spotify": "0NlDbwPSzU8jjuEVnuCswf",
+    "apple": "1895848930"
+  },
+  {
+    "id": "comet",
+    "title": "comet",
+    "title_en": "comet",
+    "date": "2026-06-08",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1760256",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1760256/itd1760256.png",
+    "url": "https://linkco.re/9ZxvmzmP",
+    "apple": "6766773932"
+  },
+  {
+    "id": "natsu",
+    "title": "夏",
+    "title_en": "summer",
+    "date": "2026-06-15",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1770211",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1770211/itd1770211.png",
+    "url": "https://linkco.re/6SyU62B4",
+    "spotify": "2qGm5smZCXIje3I4MkHVpd",
+    "apple": "6768924867"
+  },
+  {
+    "id": "futsuu",
+    "title": "ふつう",
+    "title_en": "day",
+    "date": "2026-06-03",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1780239",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1780239/itd1780239.png",
+    "url": "https://linkco.re/prne1f8r",
+    "apple": "6771010122"
+  },
+  {
+    "id": "scab",
+    "title": "scab",
+    "title_en": "scab",
+    "date": "2026-06-22",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1782092",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1782092/itd1782092.png",
+    "url": "https://linkco.re/0degaAPx",
+    "apple": "6771249260",
+    "spotify": "0FmjEBkUsctDsEoZlF9xh3"
+  },
+  {
+    "id": "ice-cream",
+    "title": "アイスクリーム",
+    "title_en": "ice cream",
+    "date": "2026-06-29",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1794201",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1794201/itd1794201.png",
+    "url": "https://linkco.re/g908Bgge",
+    "apple": "6773653913",
+    "spotify": "6trzmOXGJC7nzpWPGACHfT"
+  },
+  {
+    "id": "ai",
+    "title": "ài",
+    "title_en": "ài",
+    "date": "2026-07-06",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1806063",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1806063/itd1806063.png",
+    "url": "https://linkco.re/h1VY1p08",
+    "apple": "6776264801",
+    "spotify": "6JWvBg0klmR8cMsxtsPlyi"
+  },
+  {
+    "id": "memai",
+    "title": "眩暈",
+    "title_en": "dizziness",
+    "date": "2026-07-13",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1817043",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1817043/itd1817043.png",
+    "url": "https://linkco.re/9NHPS10S",
+    "apple": "6778690813",
+    "spotify": "1oR5Flja2gUkhoEvA0qAzo"
+  },
+  {
+    "id": "prism",
+    "title": "Prism",
+    "title_en": "Prism",
+    "date": "2026-07-20",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1827059",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1827059/itd1827059.png",
+    "url": "https://linkco.re/TGpg9HRq",
+    "apple": "6781160332",
+    "spotify": "0tNp26KPvzND3ErMGmLPy1"
+  },
+  {
+    "id": "rain",
+    "title": "rain",
+    "title_en": "rain",
+    "date": "2026-07-27",
+    "type": "Single",
+    "tags": [
+      "水"
+    ],
+    "tcid": "1837403",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1837403/itd1837403.png",
+    "url": "https://linkco.re/MYbtdsNs",
+    "apple": "6783780134",
+    "spotify": "2VXNdYH3XolGKvhdR2Dfoh"
+  },
+  {
+    "id": "flower",
+    "title": "flower",
+    "title_en": "flower",
+    "date": "2026-08-07",
+    "type": "EP",
+    "tags": [],
+    "tcid": "1878887",
+    "note": "山茶花・彼岸花・落花生",
+    "note_en": "sasanqua / cluster amaryllis / peanut",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1878887/itd1878887.png",
+    "url": "https://linkco.re/SQRAyutn",
+    "apple": "6794590323",
+    "spotify": "4NplKtpH5FbQMJkX5VljtS"
+  },
+  {
+    "id": "arashi",
+    "title": "嵐",
+    "title_en": "strom",
+    "date": "2026-08-17",
+    "type": "Single",
+    "tags": [
+      "水"
+    ],
+    "tcid": "1884595",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1884595/itd1884595.png",
+    "url": "https://linkco.re/51baPaSg"
+  },
+  {
+    "id": "uzu",
+    "title": "渦",
+    "title_en": "Uzu",
+    "date": "2026-08-24",
+    "type": "Single",
+    "tags": [
+      "水"
+    ],
+    "tcid": "1900780",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1900780/itd1900780.png",
+    "url": "https://linkco.re/reDP2y5Q"
+  }
+]

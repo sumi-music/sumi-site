@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>澄 — Sumi | News</title>
+  <link>https://sumi.musikaroid.com/</link>
+  <description>澄（Sumi）のニュースと日記</description>
+  <language>ja</language>
+  <item>
+    <title>「flower」EP、リリースしました</title>
+    <link>https://sumi.musikaroid.com/#news</link>
+    <pubDate>Fri, 07 Aug 2026 00:00:00 +0900</pubDate>
+    <guid isPermaLink="false">sumi-2026-08-07</guid>
+  </item>
+  <item>
+    <title>rain のこと</title>
+    <link>https://sumi.musikaroid.com/#news</link>
+    <pubDate>Mon, 27 Jul 2026 00:00:00 +0900</pubDate>
+    <guid isPermaLink="false">sumi-2026-07-27</guid>
+  </item>
+  <item>
+    <title>雨の日の作業机</title>
+    <link>https://sumi.musikaroid.com/#news</link>
+    <pubDate>Thu, 02 Jul 2026 00:00:00 +0900</pubDate>
+    <guid isPermaLink="false">sumi-2026-07-02</guid>
+  </item>
+</channel>
+</rss>
