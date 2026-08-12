@@ -13,21 +13,6 @@
     "apple": "1893837094"
   },
   {
-    "id": "petrichor",
-    "title": "petrichor",
-    "title_en": "petrichor",
-    "date": "2026-05-25",
-    "type": "Single",
-    "tags": [
-      "水"
-    ],
-    "tcid": "1741520",
-    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1741520/itd1741520.png",
-    "url": "https://linkco.re/tDyb5RVc",
-    "apple": "1895107366",
-    "spotify": "7Ak3QknYfuPnNQvdYDWZEi"
-  },
-  {
     "id": "microbit",
     "title": "microbit",
     "title_en": "microbit",
@@ -69,19 +54,6 @@
     "apple": "1893931999"
   },
   {
-    "id": "dream",
-    "title": "dream",
-    "title_en": "dream",
-    "date": "2026-05-12",
-    "type": "Single",
-    "tags": [],
-    "tcid": "1768073",
-    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1768073/itd1768073.png",
-    "url": "https://linkco.re/VANn7sfV",
-    "apple": "6768364846",
-    "spotify": "7awOhP4kVqKmlmasK79DPC"
-  },
-  {
     "id": "bouquet",
     "title": "ブーケ",
     "title_en": "bouquet",
@@ -93,6 +65,19 @@
     "url": "https://linkco.re/VYPcg4zM",
     "apple": "1894110057",
     "spotify": "278EebwDEc61VMP0Yd2pEV"
+  },
+  {
+    "id": "dream",
+    "title": "dream",
+    "title_en": "dream",
+    "date": "2026-05-12",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1768073",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1768073/itd1768073.png",
+    "url": "https://linkco.re/VANn7sfV",
+    "apple": "6768364846",
+    "spotify": "7awOhP4kVqKmlmasK79DPC"
   },
   {
     "id": "maria-age",
@@ -108,6 +93,21 @@
     "spotify": "4ToIDZ4iADA4EfpfPE8BO8"
   },
   {
+    "id": "petrichor",
+    "title": "petrichor",
+    "title_en": "petrichor",
+    "date": "2026-05-25",
+    "type": "Single",
+    "tags": [
+      "水"
+    ],
+    "tcid": "1741520",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1741520/itd1741520.png",
+    "url": "https://linkco.re/tDyb5RVc",
+    "apple": "1895107366",
+    "spotify": "7Ak3QknYfuPnNQvdYDWZEi"
+  },
+  {
     "id": "sou",
     "title": "想",
     "title_en": "sou",
@@ -119,6 +119,19 @@
     "url": "https://linkco.re/ddY2FPzd",
     "spotify": "6q1ssFjeX1gNP6W8GQS2zJ",
     "apple": "1895848930"
+  },
+  {
+    "id": "futsuu",
+    "title": "ふつう",
+    "title_en": "day",
+    "date": "2026-06-03",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1780239",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1780239/itd1780239.png",
+    "url": "https://linkco.re/prne1f8r",
+    "apple": "6771010122",
+    "spotify": "41tlbWuJYKM4tvkxm481oK"
   },
   {
     "id": "comet",
@@ -145,19 +158,6 @@
     "url": "https://linkco.re/6SyU62B4",
     "spotify": "50BMj8V0OrpNhrochVsvUW",
     "apple": "6768924867"
-  },
-  {
-    "id": "futsuu",
-    "title": "ふつう",
-    "title_en": "day",
-    "date": "2026-06-03",
-    "type": "Single",
-    "tags": [],
-    "tcid": "1780239",
-    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1780239/itd1780239.png",
-    "url": "https://linkco.re/prne1f8r",
-    "apple": "6771010122",
-    "spotify": "41tlbWuJYKM4tvkxm481oK"
   },
   {
     "id": "scab",
