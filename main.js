@@ -25,9 +25,13 @@
 
   /* data */
   function loadData() {
-    var needsDisco = $('#disco-track') || $('#tl-track') || $('#latest-jacket') || $('#next-block');
-    var needsPosts = $('#news-list') || $('#news-full') || $('#article');
+    var isArticle = !!$('#article');
+    var needsDisco = $('#disco-track') || $('#tl-track') || $('#latest-jacket') || $('#next-block') || isArticle;
+    var needsPosts = $('#news-list') || $('#news-full') || isArticle;
     var needsVideos = $('#mv-track');
+    var tryRenderArticle = function () {
+      if (isArticle && state.posts.length && state.items.length !== undefined) renderArticle();
+    };
     if (needsDisco) {
       fetch('discography.json').then(function (r) { return r.json(); }).then(function (d) {
         state.items = d;
@@ -35,14 +39,15 @@
         if ($('#tl-track')) renderTimeline();
         if ($('#latest-jacket')) renderLatest();
         if ($('#next-block')) { tickCountdown(); setInterval(tickCountdown, 1000); }
-      }).catch(function () {});
+        tryRenderArticle();
+      }).catch(function () { state.items = []; tryRenderArticle(); });
     }
     if (needsPosts) {
       fetch('posts.json').then(function (r) { return r.json(); }).then(function (d) {
         state.posts = d;
         if ($('#news-list')) renderNews();
         if ($('#news-full')) renderNewsFull();
-        if ($('#article')) renderArticle();
+        tryRenderArticle();
       }).catch(function () {});
     }
     if (needsVideos) {
@@ -167,8 +172,20 @@
     var bodyHtml = (bodyJa || bodyEn) ? '<div style="margin-top:20px"><div lang="ja">' + bodyJa + '</div><div lang="en">' + bodyEn + '</div></div>' : '';
     var isYoutube = post.url && /youtube\.com|youtu\.be/.test(post.url);
     var urlLabel = isYoutube ? 'WATCH' : 'LISTEN';
-    var urlHtml = post.url ? '<p style="margin:64px 0 0"><a class="mlink" target="_blank" rel="noopener" href="' + esc(post.url) + '" style="display:inline-block;border-bottom:1px solid var(--line);padding-bottom:5px">' + urlLabel + ' ↗</a></p>' : '';
-    container.innerHTML = image + titleHtml + dateHtml + bodyHtml + urlHtml;
+    var embedHtml = '';
+    if (isYoutube) {
+      var m = post.url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([A-Za-z0-9_-]+)/);
+      if (m) embedHtml = '<div style="margin:56px 0 0;aspect-ratio:16/9;max-width:680px"><iframe src="https://www.youtube.com/embed/' + esc(m[1]) + '" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:0"></iframe></div>';
+    } else if (post.url && state.items && state.items.length) {
+      for (var j = 0; j < state.items.length; j++) {
+        if (state.items[j].url === post.url && state.items[j].apple) {
+          embedHtml = '<iframe src="https://embed.music.apple.com/jp/album/' + esc(state.items[j].apple) + '" title="Apple Music player" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" style="width:100%;max-width:680px;height:450px;border:0;margin:56px 0 0;background:transparent"></iframe>';
+          break;
+        }
+      }
+    }
+    var urlHtml = post.url ? '<p style="margin:56px 0 0"><a class="mlink" target="_blank" rel="noopener" href="' + esc(post.url) + '" style="display:inline-block;border-bottom:1px solid var(--line);padding-bottom:5px">' + urlLabel + ' ↗</a></p>' : '';
+    container.innerHTML = image + titleHtml + dateHtml + embedHtml + bodyHtml + urlHtml;
     var t = (de.dataset.lang === 'en' && post.title_en ? post.title_en : post.title);
     document.title = t + ' — 澄 | Sumi';
   }
