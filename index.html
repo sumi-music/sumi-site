@@ -44,11 +44,11 @@
   </nav>
   <div style="display:flex;align-items:center;gap:16px;font-family:Karla,sans-serif;font-size:11px;letter-spacing:0.14em">
     <span style="display:flex;gap:6px;align-items:center">
-      <button id="btn-ja" style="background:none;border:none;cursor:pointer;padding:0;color:#F2F5F8;font-family:Karla,sans-serif;font-size:11px;letter-spacing:0.14em">JA</button>
+      <button id="btn-ja" aria-label="Japanese" style="background:none;border:none;cursor:pointer;padding:0;color:#F2F5F8;font-family:Karla,sans-serif;font-size:11px;letter-spacing:0.14em">JA</button>
       <span style="opacity:0.4">/</span>
-      <button id="btn-en" style="background:none;border:none;cursor:pointer;padding:0;color:#F2F5F8;font-family:Karla,sans-serif;font-size:11px;letter-spacing:0.14em">EN</button>
+      <button id="btn-en" aria-label="English" style="background:none;border:none;cursor:pointer;padding:0;color:#F2F5F8;font-family:Karla,sans-serif;font-size:11px;letter-spacing:0.14em">EN</button>
     </span>
-    <button id="btn-theme" title="Light / Dark" style="background:none;border:none;cursor:pointer;padding:0;color:#F2F5F8;font-size:13px;line-height:1">○</button>
+    <button id="btn-theme" aria-label="Toggle light or dark theme" title="Light / Dark" style="background:none;border:none;cursor:pointer;padding:0;color:#F2F5F8;font-size:13px;line-height:1">○</button>
   </div>
 </header>
 <section id="hero" style="position:relative;height:100svh;min-height:560px;overflow:hidden">
@@ -91,7 +91,7 @@
           <span lang="ja" id="next-title-ja"></span><span lang="en" id="next-title-en"></span>
           <span class="k" id="next-date" style="margin-left:14px;font-size:12px;color:var(--dim);letter-spacing:0.2em"></span>
         </p>
-        <p class="k" style="margin:0;font-weight:200;font-size:22px;letter-spacing:0.18em;color:var(--ink)"><span id="cd-d">0</span><span style="font-size:11px;color:var(--dim);margin:0 14px 0 4px">d</span><span id="cd-h">00</span><span style="font-size:11px;color:var(--dim);margin:0 14px 0 4px">h</span><span id="cd-m">00</span><span style="font-size:11px;color:var(--dim);margin:0 14px 0 4px">m</span><span id="cd-s">00</span><span style="font-size:11px;color:var(--dim);margin-left:4px">s</span></p>
+        <p class="k" role="timer" aria-label="Next release countdown" style="margin:0;font-weight:200;font-size:22px;letter-spacing:0.18em;color:var(--ink)"><span id="cd-d">0</span><span style="font-size:11px;color:var(--dim);margin:0 14px 0 4px">d</span><span id="cd-h">00</span><span style="font-size:11px;color:var(--dim);margin:0 14px 0 4px">h</span><span id="cd-m">00</span><span style="font-size:11px;color:var(--dim);margin:0 14px 0 4px">m</span><span id="cd-s">00</span><span style="font-size:11px;color:var(--dim);margin-left:4px">s</span></p>
       </div>
     </div>
   </div>

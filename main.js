@@ -3,7 +3,7 @@
   'use strict';
   var $ = function (s) { return document.querySelector(s); };
   var de = document.documentElement;
-  var state = { items: [], posts: [], videos: [], filter: 'all', sort: 'desc', selected: null, playing: false };
+  var state = { items: [], posts: [], videos: [], filter: 'all', sort: 'desc', selected: null, playing: false, lastFocus: null };
   var label = function (d) { return d.split('-').map(Number).join('.'); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
 
@@ -171,6 +171,7 @@
       + '</div></div><div id="modal-embed" style="width:100%;display:none;flex-direction:column;gap:14px;align-items:center"></div></div>';
     bg.hidden = false;
     document.body.style.overflow = 'hidden';
+    state.lastFocus = document.activeElement;
     bg.onclick = function (e) { if (e.target === bg) closeModal(); };
     bg.querySelector('.modal-close').onclick = closeModal;
     var playBtn = bg.querySelector('#modal-play');
@@ -181,8 +182,19 @@
         ? '<iframe src="https://embed.music.apple.com/jp/album/' + esc(it.apple) + '" title="Apple Music player" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" style="width:100%;max-width:500px;height:450px;border:0;background:transparent"></iframe>'
         : '<iframe src="https://linkco.re/embed/' + esc(it.url.split('/').pop()) + '" title="preview" style="width:300px;height:560px;border:0;background:transparent"></iframe>';
     };
+    bg.querySelector('.modal-close').focus();
+    bg.addEventListener('keydown', trapFocus);
   }
-  function closeModal() { var bg = $('#modal-bg'); bg.hidden = true; bg.innerHTML = ''; document.body.style.overflow = ''; }
+  function trapFocus(e) {
+    if (e.key !== 'Tab') return;
+    var bg = e.currentTarget;
+    var focusables = bg.querySelectorAll('button, a[href], iframe, [tabindex]:not([tabindex="-1"])');
+    if (!focusables.length) return;
+    var first = focusables[0], last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+  function closeModal() { var bg = $('#modal-bg'); bg.hidden = true; bg.innerHTML = ''; document.body.style.overflow = ''; bg.removeEventListener('keydown', trapFocus); if (state.lastFocus) { state.lastFocus.focus(); state.lastFocus = null; } }
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { var bg = $('#modal-bg'); if (bg && !bg.hidden) closeModal(); } });
 
   /* reveal on scroll */
