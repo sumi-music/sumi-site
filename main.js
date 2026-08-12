@@ -25,11 +25,29 @@
 
   /* data */
   function loadData() {
-    fetch('discography.json').then(function (r) { return r.json(); }).then(function (d) { state.items = d; renderDisco(); renderTimeline(); tickCountdown(); setInterval(tickCountdown, 1000); }).catch(function () {});
+    fetch('discography.json').then(function (r) { return r.json(); }).then(function (d) { state.items = d; renderDisco(); renderTimeline(); renderLatest(); tickCountdown(); setInterval(tickCountdown, 1000); }).catch(function () {});
     fetch('posts.json').then(function (r) { return r.json(); }).then(function (d) { state.posts = d; renderNews(); }).catch(function () {});
     fetch('videos.json').then(function (r) { return r.json(); }).then(function (d) { state.videos = d; renderVideos(); }).catch(function () {});
   }
   function byId(id) { for (var i = 0; i < state.items.length; i++) if (state.items[i].id === id) return state.items[i]; return null; }
+
+  /* latest (most recent released) */
+  function renderLatest() {
+    var jkt = $('#latest-jacket'); if (!jkt || !state.items.length) return;
+    var now = new Date();
+    var released = state.items.filter(function (it) { return new Date(it.date + 'T00:00:00+09:00') <= now; })
+      .sort(function (a, b) { return b.date.localeCompare(a.date); });
+    var it = released[0]; if (!it) return;
+    if (it.jacket) jkt.src = it.jacket;
+    jkt.alt = it.title + ' jacket';
+    $('#latest-title').textContent = it.title;
+    var subJa = it.type + (it.note ? ' — ' + it.note : '');
+    var subEn = it.type + (it.note ? ' — ' + (it.note_en || it.note) : '');
+    $('#latest-subtitle').innerHTML = '<span lang="ja">' + esc(subJa) + '</span><span lang="en">' + esc(subEn) + '</span>';
+    $('#latest-date').textContent = label(it.date);
+    var lnk = $('#latest-link');
+    if (it.url) { lnk.href = it.url; lnk.hidden = false; } else { lnk.hidden = true; }
+  }
 
   /* discography slider */
   function renderDisco() {
