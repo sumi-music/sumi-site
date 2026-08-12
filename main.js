@@ -145,8 +145,8 @@
       + note
       + '<p class="k" style="margin:0;font-size:11px;letter-spacing:.2em;color:var(--dim)">' + esc(it.type) + ' \u2014 ' + label(it.date) + '</p>'
       + '<div style="display:flex;flex-direction:column;gap:13px;margin-top:22px;padding-top:24px;border-top:1px solid var(--line)">'
-      + '<button id="modal-play" style="background:none;border:1px solid var(--line);cursor:pointer;padding:10px 18px;margin-bottom:6px;font-family:Karla,\'Zen Old Mincho\',serif;font-size:11px;letter-spacing:.24em;color:var(--ink);align-self:flex-start"><span lang="ja">\u25B7 \u8A66\u8074\u3059\u308B</span><span lang="en">\u25B7 PLAY</span></button>'
-      + '<a class="mlink" target="_blank" rel="noopener" href="' + esc(it.url) + '">LINKCO.RE \u2197</a>'
+      + ((it.apple || it.url) ? '<button id="modal-play" style="background:none;border:1px solid var(--line);cursor:pointer;padding:10px 18px;margin-bottom:6px;font-family:Karla,\'Zen Old Mincho\',serif;font-size:11px;letter-spacing:.24em;color:var(--ink);align-self:flex-start"><span lang="ja">\u25B7 \u8A66\u8074\u3059\u308B</span><span lang="en">\u25B7 PLAY</span></button>' : '')
+      + (it.url ? '<a class="mlink" target="_blank" rel="noopener" href="' + esc(it.url) + '">LINKCO.RE \u2197</a>' : '')
       + '<a class="mlink" target="_blank" rel="noopener" href="' + esc(spotify) + '">SPOTIFY \u2197</a>'
       + '<a class="mlink" target="_blank" rel="noopener" href="' + esc(apple) + '">APPLE MUSIC \u2197</a>'
       + '<a class="mlink" target="_blank" rel="noopener" href="' + esc(ytm) + '">YOUTUBE MUSIC \u2197</a>'
@@ -155,7 +155,8 @@
     document.body.style.overflow = 'hidden';
     bg.onclick = function (e) { if (e.target === bg) closeModal(); };
     bg.querySelector('.modal-close').onclick = closeModal;
-    bg.querySelector('#modal-play').onclick = function () {
+    var playBtn = bg.querySelector('#modal-play');
+    if (playBtn) playBtn.onclick = function () {
       var box = bg.querySelector('#modal-embed');
       box.style.display = 'flex';
       box.innerHTML = it.apple
