@@ -29,9 +29,8 @@
     var needsDisco = $('#disco-track') || $('#tl-track') || $('#latest-jacket') || $('#next-block') || isArticle;
     var needsPosts = $('#news-list') || $('#news-full') || isArticle;
     var needsVideos = $('#mv-track');
-    var tryRenderArticle = function () {
-      if (isArticle && state.posts.length && state.items.length !== undefined) renderArticle();
-    };
+    var ready = { posts: false, disco: false };
+    var tryRenderArticle = function () { if (isArticle && ready.posts && ready.disco) renderArticle(); };
     if (needsDisco) {
       fetch('discography.json').then(function (r) { return r.json(); }).then(function (d) {
         state.items = d;
@@ -39,16 +38,16 @@
         if ($('#tl-track')) renderTimeline();
         if ($('#latest-jacket')) renderLatest();
         if ($('#next-block')) { tickCountdown(); setInterval(tickCountdown, 1000); }
-        tryRenderArticle();
-      }).catch(function () { state.items = []; tryRenderArticle(); });
+        ready.disco = true; tryRenderArticle();
+      }).catch(function () { ready.disco = true; tryRenderArticle(); });
     }
     if (needsPosts) {
       fetch('posts.json').then(function (r) { return r.json(); }).then(function (d) {
         state.posts = d;
         if ($('#news-list')) renderNews();
         if ($('#news-full')) renderNewsFull();
-        tryRenderArticle();
-      }).catch(function () {});
+        ready.posts = true; tryRenderArticle();
+      }).catch(function () { ready.posts = true; tryRenderArticle(); });
     }
     if (needsVideos) {
       fetch('videos.json').then(function (r) { return r.json(); }).then(function (d) { state.videos = d; renderVideos(); }).catch(function () {});
@@ -185,7 +184,13 @@
       }
     }
     var urlHtml = post.url ? '<p style="margin:56px 0 0"><a class="mlink" target="_blank" rel="noopener" href="' + esc(post.url) + '" style="display:inline-block;border-bottom:1px solid var(--line);padding-bottom:5px">' + urlLabel + ' ↗</a></p>' : '';
-    container.innerHTML = image + titleHtml + dateHtml + embedHtml + bodyHtml + urlHtml;
+    var linksHtml = '';
+    if (post.links && post.links.length) {
+      linksHtml = '<div style="display:flex;flex-wrap:wrap;gap:26px;margin-top:44px;font-family:Karla,sans-serif;font-size:11px;letter-spacing:0.22em">'
+        + post.links.map(function (l) { return '<a href="' + esc(l.url) + '" target="_blank" rel="noopener" style="text-decoration:none;color:var(--ink)">' + esc(l.label) + '</a>'; }).join('')
+        + '</div>';
+    }
+    container.innerHTML = image + titleHtml + dateHtml + embedHtml + bodyHtml + urlHtml + linksHtml;
     var t = (de.dataset.lang === 'en' && post.title_en ? post.title_en : post.title);
     document.title = t + ' — 澄 | Sumi';
   }
