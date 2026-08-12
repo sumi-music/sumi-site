@@ -134,7 +134,7 @@
       ? '<span class="tile-img" role="img" aria-label="' + esc(it.title) + ' jacket" style="background-image:url(' + esc(it.jacket) + ')"></span>'
       : '<span style="font-size:56px;font-weight:300;color:var(--mist);opacity:.55">' + esc((it.title || '?').charAt(0)) + '</span>';
     var note = it.note ? '<p style="margin:0;font-size:11px;letter-spacing:.14em;color:var(--dim)"><span lang="ja">' + esc(it.note) + '</span><span lang="en">' + esc(it.note_en || it.note) + '</span></p>' : '';
-    var spotify = it.spotify ? 'https://open.spotify.com/album/' + it.spotify : 'https://open.spotify.com/artist/7iUpxz4w4S5UPru251vW0m';
+    var spotify = it.spotify ? 'https://open.spotify.com/album/' + it.spotify : 'https://open.spotify.com/artist/3VquG01C3eNeHyNA8pDot6';
     var apple = it.apple ? 'https://music.apple.com/jp/album/' + it.apple : 'https://music.apple.com/jp/artist/1893806816';
     var ytm = it.tcid ? 'https://www.tunecore.co.jp/to/youtube_music_key/' + it.tcid : 'https://www.youtube.com/channel/UC_r294gFgAMD6ftGgnqs63Q';
     bg.innerHTML = '<div class="modal" role="dialog" aria-modal="true" aria-label="' + esc(it.title) + '">'
