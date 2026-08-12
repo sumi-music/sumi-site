@@ -20,14 +20,34 @@
     if ($('#btn-ja')) { $('#btn-ja').onclick = function () { setLang('ja'); }; $('#btn-en').onclick = function () { setLang('en'); }; }
     if ($('#btn-theme')) $('#btn-theme').onclick = function () { setTheme(de.dataset.theme === 'dark' ? 'light' : 'dark'); };
     reveal(); ripple();
-    if ($('#disco-track')) loadData();
+    loadData();
   });
 
   /* data */
   function loadData() {
-    fetch('discography.json').then(function (r) { return r.json(); }).then(function (d) { state.items = d; renderDisco(); renderTimeline(); renderLatest(); tickCountdown(); setInterval(tickCountdown, 1000); }).catch(function () {});
-    fetch('posts.json').then(function (r) { return r.json(); }).then(function (d) { state.posts = d; renderNews(); }).catch(function () {});
-    fetch('videos.json').then(function (r) { return r.json(); }).then(function (d) { state.videos = d; renderVideos(); }).catch(function () {});
+    var needsDisco = $('#disco-track') || $('#tl-track') || $('#latest-jacket') || $('#next-block');
+    var needsPosts = $('#news-list') || $('#news-full') || $('#article');
+    var needsVideos = $('#mv-track');
+    if (needsDisco) {
+      fetch('discography.json').then(function (r) { return r.json(); }).then(function (d) {
+        state.items = d;
+        if ($('#disco-track')) renderDisco();
+        if ($('#tl-track')) renderTimeline();
+        if ($('#latest-jacket')) renderLatest();
+        if ($('#next-block')) { tickCountdown(); setInterval(tickCountdown, 1000); }
+      }).catch(function () {});
+    }
+    if (needsPosts) {
+      fetch('posts.json').then(function (r) { return r.json(); }).then(function (d) {
+        state.posts = d;
+        if ($('#news-list')) renderNews();
+        if ($('#news-full')) renderNewsFull();
+        if ($('#article')) renderArticle();
+      }).catch(function () {});
+    }
+    if (needsVideos) {
+      fetch('videos.json').then(function (r) { return r.json(); }).then(function (d) { state.videos = d; renderVideos(); }).catch(function () {});
+    }
   }
   function byId(id) { for (var i = 0; i < state.items.length; i++) if (state.items[i].id === id) return state.items[i]; return null; }
 
@@ -114,12 +134,43 @@
   }
 
   /* news */
+  function newsRow(p) {
+    return '<a href="article.html?id=' + esc(p.id) + '" class="news-row" style="text-decoration:none;color:inherit"><span class="news-date">' + label(p.date) + '</span><span><span lang="ja">' + esc(p.title) + '</span><span lang="en">' + esc(p.title_en || p.title) + '</span></span></a>';
+  }
   function renderNews() {
     var t = $('#news-list'); if (!t) return;
+    var list = state.posts.slice().sort(function (a, b) { return b.date.localeCompare(a.date); }).slice(0, 5);
+    t.innerHTML = list.map(newsRow).join('')
+      + '<div style="border-top:1px solid var(--line)"></div>'
+      + '<p style="margin:32px 0 0;text-align:right"><a href="news.html" class="mlink" style="border-bottom:1px solid var(--line);padding-bottom:3px"><span lang="ja">もっと見る →</span><span lang="en">More →</span></a></p>';
+  }
+  function renderNewsFull() {
+    var t = $('#news-full'); if (!t) return;
     var list = state.posts.slice().sort(function (a, b) { return b.date.localeCompare(a.date); });
-    t.innerHTML = list.map(function (p) {
-      return '<div class="news-row"><span class="news-date">' + label(p.date) + '</span><span><span lang="ja">' + esc(p.title) + '</span><span lang="en">' + esc(p.title_en || p.title) + '</span></span></div>';
-    }).join('') + '<div style="border-top:1px solid var(--line)"></div>';
+    t.innerHTML = list.map(newsRow).join('') + '<div style="border-top:1px solid var(--line)"></div>';
+  }
+  function renderArticle() {
+    var container = $('#article'); if (!container) return;
+    var qid = new URLSearchParams(location.search).get('id');
+    var post = null;
+    if (qid) for (var i = 0; i < state.posts.length; i++) if (state.posts[i].id === qid) { post = state.posts[i]; break; }
+    if (!post) { location.replace('news.html'); return; }
+    var image = post.image ? '<img src="' + esc(post.image) + '" alt="" loading="lazy" style="display:block;width:100%;max-width:680px;height:auto;border-radius:12px;margin:0 0 48px">' : '';
+    var titleHtml = '<h1 style="margin:0;font-size:24px;font-weight:300;letter-spacing:0.12em;line-height:1.8"><span lang="ja">' + esc(post.title) + '</span><span lang="en">' + esc(post.title_en || post.title) + '</span></h1>';
+    var dateHtml = '<p class="k" style="margin:14px 0 0;font-size:11px;letter-spacing:0.22em;color:var(--dim)">' + label(post.date) + '</p>';
+    var paragraphs = function (text, extraStyle) {
+      return (text || '').split('\n').map(function (s) { return s.trim(); }).filter(function (s) { return s; })
+        .map(function (p) { return '<p style="margin:32px 0 0;font-size:14px;line-height:2.4;letter-spacing:0.06em' + (extraStyle || '') + '">' + esc(p) + '</p>'; }).join('');
+    };
+    var bodyJa = paragraphs(post.body);
+    var bodyEn = paragraphs(post.body_en || post.body, ';font-family:Karla,\'Zen Old Mincho\',serif;line-height:2.2;letter-spacing:0.03em');
+    var bodyHtml = (bodyJa || bodyEn) ? '<div style="margin-top:20px"><div lang="ja">' + bodyJa + '</div><div lang="en">' + bodyEn + '</div></div>' : '';
+    var isYoutube = post.url && /youtube\.com|youtu\.be/.test(post.url);
+    var urlLabel = isYoutube ? 'WATCH' : 'LISTEN';
+    var urlHtml = post.url ? '<p style="margin:64px 0 0"><a class="mlink" target="_blank" rel="noopener" href="' + esc(post.url) + '" style="display:inline-block;border-bottom:1px solid var(--line);padding-bottom:5px">' + urlLabel + ' ↗</a></p>' : '';
+    container.innerHTML = image + titleHtml + dateHtml + bodyHtml + urlHtml;
+    var t = (de.dataset.lang === 'en' && post.title_en ? post.title_en : post.title);
+    document.title = t + ' — 澄 | Sumi';
   }
 
   /* countdown */

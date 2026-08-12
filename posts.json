@@ -1,17 +1,27 @@
 [
- {
-  "date": "2026-08-07",
-  "title": "「flower」EP、リリースしました",
-  "title_en": "Released the EP “flower”"
- },
- {
-  "date": "2026-07-27",
-  "title": "rain のこと",
-  "title_en": "About “rain”"
- },
- {
-  "date": "2026-07-02",
-  "title": "雨の日の作業机",
-  "title_en": "A desk on a rainy day"
- }
+  {
+    "id": "2026-08-07-flower-release",
+    "date": "2026-08-07",
+    "title": "「flower」EP、リリースしました",
+    "title_en": "Released the EP “flower”",
+    "body": "",
+    "body_en": "",
+    "url": "https://linkco.re/SQRAyutn"
+  },
+  {
+    "id": "2026-07-27-rain-note",
+    "date": "2026-07-27",
+    "title": "rain のこと",
+    "title_en": "About “rain”",
+    "body": "",
+    "body_en": ""
+  },
+  {
+    "id": "2026-07-02-rainy-desk",
+    "date": "2026-07-02",
+    "title": "雨の日の作業机",
+    "title_en": "A desk on a rainy day",
+    "body": "",
+    "body_en": ""
+  }
 ]
