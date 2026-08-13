@@ -135,6 +135,7 @@
         + '<span class="tl-date">' + label(it.date) + '</span></button>';
     }).join('');
     t.querySelectorAll('.tl-row').forEach(function (el) { el.onclick = function () { openModal(el.dataset.id); }; });
+    requestAnimationFrame(function () { t.scrollTop = t.scrollHeight; });
   }
 
   /* news */
