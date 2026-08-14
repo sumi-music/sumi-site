@@ -52,8 +52,29 @@
     if (needsVideos) {
       fetch('videos.json').then(function (r) { return r.json(); }).then(function (d) { state.videos = d; renderVideos(); }).catch(function () {});
     }
+    if ($('#catalog')) {
+      fetch('releases.json').then(function (r) { return r.json(); }).then(function (d) { renderCatalog(d); }).catch(function () {});
+    }
   }
   function byId(id) { for (var i = 0; i < state.items.length; i++) if (state.items[i].id === id) return state.items[i]; return null; }
+
+  /* sonoTracks catalog */
+  function renderCatalog(d) {
+    var el = $('#catalog'); if (!el || !d || !d.releases) return;
+    if (!d.releases.length) { el.innerHTML = ''; return; }
+    var cards = d.releases.map(function (r) {
+      var meta = [r.trackCount ? r.trackCount + ' tracks' : '', r.priceMin ? '¥' + r.priceMin + '〜' : ''].filter(Boolean).join(' · ');
+      var art = r.artworkUrl ? 'background-image:url(' + esc(r.artworkUrl) + ');background-size:cover;background-position:center;' : '';
+      return '<a href="' + esc(r.url) + '" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block">'
+        + '<span style="display:block;aspect-ratio:1;' + art + 'background-color:var(--jbg);border-radius:4px"></span>'
+        + '<span style="display:block;margin-top:12px;font-size:13px;letter-spacing:0.08em">' + esc(r.title) + '</span>'
+        + '<span style="display:block;margin-top:4px;font-size:11px;letter-spacing:0.1em;color:var(--dim)">' + esc(r.artist) + '</span>'
+        + (meta ? '<span style="display:block;margin-top:2px;font-family:Karla,sans-serif;font-size:10px;letter-spacing:0.14em;color:var(--dim);opacity:0.7">' + esc(meta) + '</span>' : '')
+        + '</a>';
+    }).join('');
+    var more = d.artistUrl ? '<p style="margin:44px 0 0;text-align:center"><a href="' + esc(d.artistUrl) + '" target="_blank" rel="noopener" class="mlink" style="border-bottom:1px solid var(--line);padding-bottom:5px"><span lang="ja">sono-tracks で全てを見る ↗</span><span lang="en">SEE ALL ON SONO-TRACKS ↗</span></a></p>' : '';
+    el.innerHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:24px">' + cards + '</div>' + more;
+  }
 
   /* latest (most recent released) */
   function renderLatest() {
