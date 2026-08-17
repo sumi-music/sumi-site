@@ -7,9 +7,10 @@
   var label = function (d) { return d.split('-').map(Number).join('.'); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
 
-  /* lang / theme */
-  function setLang(l) { de.dataset.lang = l; try { localStorage.setItem('sumi-lang', l); } catch (e) {} syncHeader(); }
-  function setTheme(t) { de.dataset.theme = t; try { localStorage.setItem('sumi-theme', t); } catch (e) {} syncHeader(); }
+  /* lang / theme (storage key prefix follows site: musikaroid.com = mkr-, else sumi-) */
+  var STORAGE_PREFIX = (location.hostname === 'musikaroid.com') ? 'mkr-' : 'sumi-';
+  function setLang(l) { de.dataset.lang = l; try { localStorage.setItem(STORAGE_PREFIX + 'lang', l); } catch (e) {} syncHeader(); }
+  function setTheme(t) { de.dataset.theme = t; try { localStorage.setItem(STORAGE_PREFIX + 'theme', t); } catch (e) {} syncHeader(); }
   function syncHeader() {
     var ja = $('#btn-ja'), en = $('#btn-en'), th = $('#btn-theme');
     if (ja) { ja.style.opacity = de.dataset.lang === 'ja' ? 1 : 0.45; en.style.opacity = de.dataset.lang === 'en' ? 1 : 0.45; }
@@ -52,7 +53,32 @@
     if (needsVideos) {
       fetch('videos.json').then(function (r) { return r.json(); }).then(function (d) { state.videos = d; renderVideos(); }).catch(function () {});
     }
+    if ($('#artist-grid')) {
+      fetch('artists.json').then(function (r) { return r.json(); }).then(function (d) { renderArtists(d.artists || []); }).catch(function () {});
+    }
     /* Catalog is handled by sonotracks-catalog.js (packaged, auto-init on .sonotracks-dg). */
+  }
+
+  /* artists roster */
+  function renderArtists(list) {
+    var el = $('#artist-grid'); if (!el || !list.length) return;
+    el.classList.remove('count-2', 'count-3plus');
+    if (list.length === 2) el.classList.add('count-2');
+    else if (list.length >= 3) el.classList.add('count-3plus');
+    el.innerHTML = list.map(function (a) {
+      var img = a.image ? '<img src="' + esc(a.image) + '" alt="' + esc(a.name) + '" loading="lazy">' : '';
+      var role = a.role ? '<span class="arole"><span lang="ja">' + esc(a.role) + '</span><span lang="en">' + esc(a.role_en || a.role) + '</span></span>' : '';
+      var tag = a.tagline ? '<span class="atag"><span lang="ja">' + esc(a.tagline) + '</span><span lang="en">' + esc(a.tagline_en || a.tagline) + '</span></span>' : '';
+      var open = a.url ? '<a class="artist-card" href="' + esc(a.url) + '" target="_blank" rel="noopener">' : '<div class="artist-card">';
+      var close = a.url ? '</a>' : '</div>';
+      return open
+        + img
+        + '<span class="an">' + esc(a.name) + '</span>'
+        + '<span class="aen">' + esc((a.name_en || a.name).toUpperCase()) + (a.url ? ' — ' + esc(a.url.replace(/^https?:\/\//,'').replace(/\/$/,'')).toUpperCase() : '') + '</span>'
+        + role
+        + tag
+        + close;
+    }).join('');
   }
   function byId(id) { for (var i = 0; i < state.items.length; i++) if (state.items[i].id === id) return state.items[i]; return null; }
 
