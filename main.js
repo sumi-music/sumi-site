@@ -67,17 +67,18 @@
     else if (list.length >= 3) el.classList.add('count-3plus');
     el.innerHTML = list.map(function (a) {
       var img = a.image ? '<img src="' + esc(a.image) + '" alt="' + esc(a.name) + '" loading="lazy">' : '';
+      var host = a.url ? ' — ' + esc(a.url.replace(/^https?:\/\//,'').replace(/\/$/,'')).toUpperCase() : '';
+      var nameBlock = '<span class="an">' + esc(a.name) + '</span>'
+        + '<span class="aen">' + esc((a.name_en || a.name).toUpperCase()) + host + '</span>';
+      var linked = a.url
+        ? '<a class="artist-card__link" href="' + esc(a.url) + '" target="_blank" rel="noopener">' + img + nameBlock + '</a>'
+        : '<div class="artist-card__link">' + img + nameBlock + '</div>';
       var role = a.role ? '<span class="arole"><span lang="ja">' + esc(a.role) + '</span><span lang="en">' + esc(a.role_en || a.role) + '</span></span>' : '';
       var tag = a.tagline ? '<span class="atag"><span lang="ja">' + esc(a.tagline) + '</span><span lang="en">' + esc(a.tagline_en || a.tagline) + '</span></span>' : '';
-      var open = a.url ? '<a class="artist-card" href="' + esc(a.url) + '" target="_blank" rel="noopener">' : '<div class="artist-card">';
-      var close = a.url ? '</a>' : '</div>';
-      return open
-        + img
-        + '<span class="an">' + esc(a.name) + '</span>'
-        + '<span class="aen">' + esc((a.name_en || a.name).toUpperCase()) + (a.url ? ' — ' + esc(a.url.replace(/^https?:\/\//,'').replace(/\/$/,'')).toUpperCase() : '') + '</span>'
-        + role
-        + tag
-        + close;
+      var links = (a.links && a.links.length)
+        ? '<div class="alinks">' + a.links.map(function (l) { return '<a href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.label) + '</a>'; }).join('') + '</div>'
+        : '';
+      return '<div class="artist-card">' + linked + role + tag + links + '</div>';
     }).join('');
   }
   function byId(id) { for (var i = 0; i < state.items.length; i++) if (state.items[i].id === id) return state.items[i]; return null; }
