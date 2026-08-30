@@ -195,9 +195,14 @@
       return (text || '').split('\n').map(function (s) { return s.trim(); }).filter(function (s) { return s; })
         .map(function (p) { return '<p style="margin:32px 0 0;font-size:14px;line-height:2.4;letter-spacing:0.06em' + (extraStyle || '') + '">' + esc(p) + '</p>'; }).join('');
     };
-    var bodyJa = paragraphs(post.body);
-    var bodyEn = paragraphs(post.body_en || post.body, ';font-family:Karla,\'Zen Old Mincho\',serif;line-height:2.2;letter-spacing:0.03em');
-    var bodyHtml = (bodyJa || bodyEn) ? '<div style="margin-top:20px"><div lang="ja">' + bodyJa + '</div><div lang="en">' + bodyEn + '</div></div>' : '';
+    var bodyHtml;
+    if (post.body_html) {
+      bodyHtml = '<div class="article-body" style="margin-top:20px">' + post.body_html + '</div>';
+    } else {
+      var bodyJa = paragraphs(post.body);
+      var bodyEn = paragraphs(post.body_en || post.body, ';font-family:Karla,\'Zen Old Mincho\',serif;line-height:2.2;letter-spacing:0.03em');
+      bodyHtml = (bodyJa || bodyEn) ? '<div style="margin-top:20px"><div lang="ja">' + bodyJa + '</div><div lang="en">' + bodyEn + '</div></div>' : '';
+    }
     var isYoutube = post.url && /youtube\.com|youtu\.be/.test(post.url);
     var urlLabel = isYoutube ? 'WATCH' : 'LISTEN';
     var embedHtml = '';
