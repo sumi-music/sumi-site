@@ -5,7 +5,7 @@
   var de = document.documentElement;
   var state = { items: [], posts: [], videos: [], filter: 'all', sort: 'desc', selected: null, playing: false, lastFocus: null };
   /* FEATURED MUSIC: the one song shown in the hero. Change this id to swap the featured track. */
-  var FEATURED_ID = 'kaze';
+  var FEATURED_ID = 'morpho';
   var label = function (d) { return d.split('-').map(Number).join('.'); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
 
