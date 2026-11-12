@@ -320,5 +320,83 @@
     "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1928140/itd1928140.png",
     "url": "https://linkco.re/XN7hpnXu",
     "apple": "6805348250"
+  },
+  {
+    "id": "terminal",
+    "title": "ターミナル",
+    "title_en": "terminal",
+    "date": "2026-09-21",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1939500",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1939500/itd1939500.png",
+    "url": "https://linkco.re/9S2f2BBs",
+    "apple": "6807682644",
+    "spotify": "1PItApb1q6kQsusYfIuHvb"
+  },
+  {
+    "id": "pudica",
+    "title": "Pudica",
+    "title_en": "pudica",
+    "date": "2026-09-28",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1950423",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1950423/itd1950423.png",
+    "url": "https://linkco.re/7eG8rphQ",
+    "apple": "6810179789",
+    "spotify": "3wU4bs98bSmjx7xZD6F8vM"
+  },
+  {
+    "id": "aine",
+    "title": "aîné",
+    "title_en": "aîné",
+    "date": "2026-10-05",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1961109",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1961109/itd1961109.png",
+    "url": "https://linkco.re/68cBTy09",
+    "apple": "6812706183",
+    "spotify": "3XQqjJavV05ORwOVdtzwp0"
+  },
+  {
+    "id": "touka",
+    "title": "透花",
+    "title_en": "touka",
+    "date": "2026-10-12",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1972839",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1972839/itd1972839.png",
+    "url": "https://linkco.re/sxNBt71Z",
+    "apple": "6815967976",
+    "spotify": "4kX685a1Qxg0MYRT3MgPbF"
+  },
+  {
+    "id": "envy",
+    "title": "ENVY",
+    "title_en": "envy",
+    "date": "2026-10-19",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1989986",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1989986/itd1989986.png",
+    "url": "https://linkco.re/RxYVNE7G",
+    "apple": "6818985481",
+    "spotify": "7erFXwjfQwcKXDjKbURkJe"
+  },
+  {
+    "id": "morpho",
+    "title": "モルフォ",
+    "title_en": "morpho",
+    "date": "2026-10-26",
+    "type": "Single",
+    "tags": [],
+    "tcid": "1997098",
+    "jacket": "https://www.tunecore.co.jp/s3pna/tcj-image-production/u580179/r1997098/itd1997098.png",
+    "url": "https://linkco.re/T0e52hG6",
+    "apple": "6820442935",
+    "spotify": "0a9AbSs9opsIr3PcJE4YzK"
   }
 ]
