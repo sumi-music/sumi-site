@@ -49,15 +49,41 @@
     <button id="btn-theme" aria-label="Toggle light or dark theme" title="Light / Dark" style="background:none;border:none;cursor:pointer;padding:0;color:#F2F5F8;font-size:13px;line-height:1">○</button>
   </div>
 </header>
-<section id="hero" style="position:relative;height:100svh;min-height:560px;overflow:hidden">
+<section id="hero" style="position:relative;min-height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:112px 24px 104px">
   <img src="assets/hero.webp" alt="" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
   <div style="position:absolute;inset:-6%;background:radial-gradient(60% 42% at 30% 62%, rgba(253,253,253,0.22), transparent 70%);animation:shimmerA 16s ease-in-out infinite alternate;pointer-events:none"></div>
   <div style="position:absolute;inset:-6%;background:radial-gradient(50% 36% at 72% 40%, rgba(122,147,168,0.28), transparent 70%);animation:shimmerB 21s ease-in-out infinite alternate;pointer-events:none"></div>
   <div style="position:absolute;inset:0;background:linear-gradient(rgba(14,24,34,0.12), rgba(14,24,34,0.3) 78%, rgba(14,24,34,0.42));pointer-events:none"></div>
-  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px">
-    <h1 style="margin:0;color:#FBFDFE;font-family:'Zen Old Mincho',serif;font-weight:400;font-size:clamp(96px, 16vw, 200px);line-height:1;animation:inkBleed 2.2s ease-out both;text-shadow:0 0 60px rgba(251,253,254,0.25)">澄</h1>
-    <div style="width:1px;height:60px;background:rgba(251,253,254,0.45)"></div>
-    <p style="margin:0;color:rgba(251,253,254,0.85);font-family:Karla,sans-serif;font-weight:200;font-size:12px;letter-spacing:0.5em;writing-mode:vertical-rl">SUMI</p>
+  <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:22px;width:100%;max-width:560px;min-width:0;margin:0 auto">
+    <h1 style="margin:0;color:#FBFDFE;font-family:'Zen Old Mincho',serif;font-weight:400;font-size:clamp(80px, 12vw, 164px);line-height:1;animation:inkBleed 2.2s ease-out both;text-shadow:0 0 60px rgba(251,253,254,0.25)">澄</h1>
+    <p style="margin:0;color:rgba(251,253,254,0.85);font-family:Karla,sans-serif;font-weight:200;font-size:12px;letter-spacing:0.5em">SUMI</p>
+    <p style="margin:6px 0 0;max-width:100%;color:#FBFDFE;font-family:'Zen Old Mincho',serif;font-size:clamp(17px, 2.6vw, 22px);font-weight:400;letter-spacing:0.18em;line-height:1.9;text-align:center;text-wrap:pretty;text-shadow:0 0 30px rgba(14,24,34,0.45)">
+      <span lang="ja">表裏なく、うつろう。</span><span lang="en">Ever-changing, without contradiction.</span>
+    </p>
+    <p style="margin:0;max-width:100%;color:rgba(251,253,254,0.78);font-size:12px;letter-spacing:0.14em;line-height:2;text-align:center;text-wrap:pretty">
+      <span lang="ja">風、雨、花。名前のつかない感情を音楽に。</span><span lang="en">Wind, rain, flowers — the unnamed emotions, in music.</span>
+    </p>
+    <div style="width:1px;height:46px;background:rgba(251,253,254,0.45)"></div>
+    <button id="featured-block" type="button" hidden style="width:100%;max-width:100%;box-sizing:border-box;text-align:left;cursor:pointer;background:rgba(14,24,34,0.34);border:1px solid rgba(251,253,254,0.28);border-radius:3px;padding:16px 18px;color:#FBFDFE;font-family:inherit;-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)">
+      <span class="k" style="display:block;font-family:Karla,sans-serif;font-size:10px;letter-spacing:0.24em;color:rgba(251,253,254,0.66)">FEATURED MUSIC</span>
+      <span style="display:flex;align-items:center;gap:15px;margin-top:11px">
+        <span aria-hidden="true" style="flex:none;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(251,253,254,0.5);border-radius:50%;font-size:13px;line-height:1;padding-left:3px">▷</span>
+        <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px">
+          <span style="font-size:13px;letter-spacing:0.1em;line-height:1.6">
+            <span lang="ja">初めての方へ、おすすめの一曲</span><span lang="en">Start here — one song for new listeners</span>
+          </span>
+          <span id="featured-title" style="font-family:'Zen Old Mincho',serif;font-size:17px;letter-spacing:0.12em;line-height:1.4"></span>
+          <span style="font-family:Karla,sans-serif;font-size:10px;letter-spacing:0.2em;color:rgba(251,253,254,0.66)">
+            <span lang="ja">試聴・フル尺へのリンク</span><span lang="en">Preview and full-length links</span>
+          </span>
+        </span>
+      </span>
+    </button>
+    <p style="margin:2px 0 0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px;font-family:Karla,'Zen Old Mincho',serif;font-size:11px;letter-spacing:0.2em">
+      <a href="musikaroid/" style="text-decoration:none;color:rgba(251,253,254,0.82);border-bottom:1px solid rgba(251,253,254,0.3);padding-bottom:4px"><span lang="ja">ムジカロイドとは？</span><span lang="en">WHAT IS MUSIKAROID?</span></a>
+      <span aria-hidden="true" style="color:rgba(251,253,254,0.4)">｜</span>
+      <a href="statement.html" style="text-decoration:none;color:rgba(251,253,254,0.82);border-bottom:1px solid rgba(251,253,254,0.3);padding-bottom:4px"><span lang="ja">制作工程を見る</span><span lang="en">SEE THE PROCESS</span></a>
+    </p>
   </div>
   <div style="position:absolute;bottom:0;left:0;right:0;height:26%;background:linear-gradient(transparent, var(--bg));pointer-events:none"></div>
   <div style="position:absolute;bottom:36px;left:50%;width:1px;height:52px;background:rgba(251,253,254,0.5)"></div>

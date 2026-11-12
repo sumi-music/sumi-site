@@ -4,6 +4,8 @@
   var $ = function (s) { return document.querySelector(s); };
   var de = document.documentElement;
   var state = { items: [], posts: [], videos: [], filter: 'all', sort: 'desc', selected: null, playing: false, lastFocus: null };
+  /* FEATURED MUSIC: the one song shown in the hero. Change this id to swap the featured track. */
+  var FEATURED_ID = 'kaze';
   var label = function (d) { return d.split('-').map(Number).join('.'); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
 
@@ -27,7 +29,7 @@
   /* data */
   function loadData() {
     var isArticle = !!$('#article');
-    var needsDisco = $('#disco-track') || $('#tl-track') || $('#latest-jacket') || $('#next-block') || isArticle;
+    var needsDisco = $('#disco-track') || $('#tl-track') || $('#latest-jacket') || $('#next-block') || $('#featured-block') || isArticle;
     var needsPosts = $('#news-list') || $('#news-full') || isArticle;
     var needsVideos = $('#mv-track');
     var ready = { posts: false, disco: false };
@@ -38,6 +40,7 @@
         if ($('#disco-track')) renderDisco();
         if ($('#tl-track')) renderTimeline();
         if ($('#latest-jacket')) renderLatest();
+        if ($('#featured-block')) renderFeatured();
         if ($('#next-block')) { tickCountdown(); setInterval(tickCountdown, 1000); }
         ready.disco = true; tryRenderArticle();
       }).catch(function () { ready.disco = true; tryRenderArticle(); });
@@ -84,6 +87,19 @@
   function byId(id) { for (var i = 0; i < state.items.length; i++) if (state.items[i].id === id) return state.items[i]; return null; }
 
   /* latest (most recent released) */
+  /* hero featured track */
+  function renderFeatured() {
+    var btn = $('#featured-block'); if (!btn) return;
+    var it = byId(FEATURED_ID);
+    if (!it) { btn.hidden = true; return; }
+    var t = $('#featured-title');
+    if (t) {
+      t.innerHTML = '<span lang="ja">' + esc(it.title) + '</span><span lang="en">' + esc(it.title_en || it.title) + '</span>';
+    }
+    btn.hidden = false;
+    btn.onclick = function () { openModal(it.id); };
+  }
+
   function renderLatest() {
     var jkt = $('#latest-jacket'); if (!jkt || !state.items.length) return;
     var now = new Date();
